@@ -33,14 +33,16 @@ class Currency extends StatelessWidget {
             children: [
               //Drawer header
               DrawerHeader(
-                  decoration: BoxDecoration(color: Color(0xFF1C1C1C)),
-                  child: TextButton(
-                      onPressed: () {},
-                      child: const Icon(
-                        Icons.calculate,
-                        color: Color(0xFFFF9500),
-                        size: 50,
-                      ))),
+                decoration: BoxDecoration(color: Color(0xFF1C1C1C)),
+                child: TextButton(
+                  onPressed: () {},
+                  child: const Icon(
+                    Icons.calculate,
+                    color: Color(0xFFFF9500),
+                    size: 50,
+                  ),
+                ),
+              ),
 
               //Navigation route for scientific calculator
               Container(
@@ -49,10 +51,14 @@ class Currency extends StatelessWidget {
                   ),
                   child: TextButton(
                       onPressed: () {
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) {
-                          return Home();
-                        }));
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return Home();
+                            },
+                          ),
+                        );
                       },
                       child: const Text("Standard",
                           style: TextStyle(color: Color(0xFF1C1C1C))))),
@@ -64,10 +70,14 @@ class Currency extends StatelessWidget {
                   ),
                   child: TextButton(
                       onPressed: () {
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) {
-                          return ScientificCalc();
-                        }));
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return ScientificCalc();
+                            },
+                          ),
+                        );
                       },
                       child: const Text("Scientific",
                           style: TextStyle(color: Color(0xFF1C1C1C))))),
@@ -79,10 +89,14 @@ class Currency extends StatelessWidget {
                   ),
                   child: TextButton(
                       onPressed: () {
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) {
-                          return const Percentage();
-                        }));
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return const Percentage();
+                            },
+                          ),
+                        );
                       },
                       child: const Text("Percentage",
                           style: TextStyle(color: Color(0xFF1C1C1C)))))
