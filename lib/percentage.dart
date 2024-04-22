@@ -1,4 +1,5 @@
 //Import section
+import 'package:calculator/currency.dart';
 import 'package:flutter/material.dart';
 import 'package:calculator/home.dart';
 import 'package:calculator/scientific_calculator.dart';
@@ -8,19 +9,21 @@ import 'package:calculator/scientific_calculator.dart';
 //First part of statefulWidget
 class Percentage extends StatefulWidget {
   const Percentage({super.key});
+
   //Setting up the state
   @override
   State<Percentage> createState() => _PercentageState();
 }
 
+//State
 class _PercentageState extends State<Percentage> {
-
   //The section of Variables
 
   //Text field controller
   TextEditingController _total = TextEditingController();
   TextEditingController _net = TextEditingController();
   TextEditingController _percentage = TextEditingController();
+
   //This variables are for containing numbers
   double _totalN = 0;
   double _netN = 0;
@@ -30,7 +33,6 @@ class _PercentageState extends State<Percentage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       //Appbar
       appBar: AppBar(
         leading: Icon(Icons.percent_rounded),
@@ -45,15 +47,14 @@ class _PercentageState extends State<Percentage> {
         ),
         child: ListView(
           children: [
-
             //Drawer header
             DrawerHeader(
-                decoration: BoxDecoration(color: Color(0xFFFF9500)),
+                decoration: BoxDecoration(color: Color(0xFF1C1C1C)),
                 child: TextButton(
                     onPressed: () {},
                     child: Icon(
                       Icons.calculate,
-                      color: Color(0xFFD4D4D2),
+                      color: Color(0xFFFF9500),
                       size: 50,
                     ))),
 
@@ -93,7 +94,16 @@ class _PercentageState extends State<Percentage> {
                   color: Color(0xFFD4D4D2),
                 ),
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return Currency();
+                          },
+                        ),
+                      );
+                    },
                     child: Text("Currency",
                         style: TextStyle(color: Color(0xFF1C1C1C)))))
           ],
@@ -101,23 +111,26 @@ class _PercentageState extends State<Percentage> {
       ),
 
       //Body part of percentage calculator
-      body: Center( //Center for placing everything's in center
+      body: Center(
+        //Center for placing everything's in center
         //Main frame of percentage calculator.
         child: Column(
-          mainAxisSize: MainAxisSize.max, //This will allow it to takeover the whole screen.
+          mainAxisSize: MainAxisSize.max,
+          //This will allow it to takeover the whole screen.
           children: [
+            //Percentage showing section.
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Container(
-                width: 280,
+                width: MediaQuery.sizeOf(context).width - 40,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7),
                   color: Color(0xFFFF9500),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 25),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   child: SizedBox(
-                      height: 58,
+                      height: MediaQuery.sizeOf(context).height / 15,
                       child: TextField(
                         readOnly: true,
                         keyboardType: TextInputType.number,
@@ -132,7 +145,10 @@ class _PercentageState extends State<Percentage> {
                                   Icons.percent,
                                   color: Color(0xFFD4D4D2),
                                 ),
-                                Text(" Percentage...", style: TextStyle(color: Color(0xFFD4D4D2)),)
+                                Text(
+                                  " Percentage...",
+                                  style: TextStyle(color: Color(0xFFD4D4D2)),
+                                )
                               ],
                             )),
                         //onChanged: (value) {},
@@ -140,18 +156,20 @@ class _PercentageState extends State<Percentage> {
                 ),
               ),
             ),
+
+            //Net number showing section
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Container(
-                width: 280,
+                width: MediaQuery.sizeOf(context).width - 40,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7),
                   color: Color(0xFFFF9500),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 25),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   child: SizedBox(
-                      height: 58,
+                      height: MediaQuery.sizeOf(context).height / 15,
                       child: TextField(
                         keyboardType: TextInputType.number,
                         controller: _net,
@@ -160,12 +178,16 @@ class _PercentageState extends State<Percentage> {
                             isDense: true,
                             hintText: "net...",
                             label: Row(
+                              //mainAxisSize: MainAxisSize.min,
                               children: [
                                 Icon(
                                   Icons.join_left,
                                   color: Color(0xFFD4D4D2),
                                 ),
-                                Text(" Net...", style: TextStyle(color: Color(0xFFD4D4D2)),)
+                                Text(
+                                  " Net...",
+                                  style: TextStyle(color: Color(0xFFD4D4D2)),
+                                )
                               ],
                             )),
                         onChanged: (value) {
@@ -178,6 +200,8 @@ class _PercentageState extends State<Percentage> {
                 ),
               ),
             ),
+
+            //Total number showing section
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Container(
@@ -185,11 +209,11 @@ class _PercentageState extends State<Percentage> {
                   borderRadius: BorderRadius.circular(7),
                   color: Color(0xFFFF9500),
                 ),
-                width: 280,
+                width: MediaQuery.sizeOf(context).width - 40,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 25),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   child: SizedBox(
-                      height: 58,
+                      height: MediaQuery.sizeOf(context).height / 15,
                       child: TextField(
                         keyboardType: TextInputType.number,
                         controller: _total,
@@ -203,7 +227,10 @@ class _PercentageState extends State<Percentage> {
                                   Icons.join_full,
                                   color: Color(0xFFD4D4D2),
                                 ),
-                                Text(" Total...", style: TextStyle(color: Color(0xFFD4D4D2)),)
+                                Text(
+                                  " Total...",
+                                  style: TextStyle(color: Color(0xFFD4D4D2)),
+                                )
                               ],
                             )),
                         onChanged: (value) {

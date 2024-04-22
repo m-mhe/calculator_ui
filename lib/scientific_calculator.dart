@@ -1,31 +1,46 @@
 //Import section
+import 'package:calculator/currency.dart';
 import 'package:flutter/material.dart';
 import 'package:calculator/home.dart';
 import 'package:calculator/percentage.dart';
 
+//This custom widget contain Scientific calculator
+
+//First part of statefulWidget
 class ScientificCalc extends StatefulWidget {
   const ScientificCalc({super.key});
 
+  //Setting up the state
   @override
   State<ScientificCalc> createState() => _ScientificCalcState();
 }
 
+//State
 class _ScientificCalcState extends State<ScientificCalc> {
+
+  //Building
   @override
   Widget build(BuildContext context) {
+    //Scaffold
     return Scaffold(
+      //It gives a background color
       backgroundColor: Color(0xFF505050),
+      //App bar
       appBar: AppBar(
         leading: Icon(Icons.science_rounded),
         title: const Text("Scientific Calculator"),
       ),
+
+      //Left sided drawer
       endDrawer: Drawer(
+        //Drawer configuration
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(10), topLeft: Radius.circular(10)),
         ),
         child: ListView(
           children: [
+            //Drawer header
             DrawerHeader(
                 decoration: BoxDecoration(color: Color(0xFF1C1C1C)),
                 child: TextButton(
@@ -35,6 +50,8 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       color: Color(0xFFFF9500),
                       size: 50,
                     ))),
+
+            //Route to standard
             Container(
                 decoration: BoxDecoration(
                   color: Color(0xFFD4D4D2),
@@ -48,6 +65,8 @@ class _ScientificCalcState extends State<ScientificCalc> {
                     },
                     child: Text("Standard",
                         style: TextStyle(color: Color(0xFF1C1C1C))))),
+
+            //Route to percentage calculator
             Container(
                 decoration: BoxDecoration(
                   color: Color(0xFFD4D4D2),
@@ -61,20 +80,29 @@ class _ScientificCalcState extends State<ScientificCalc> {
                     },
                     child: Text("Percentage",
                         style: TextStyle(color: Color(0xFF1C1C1C))))),
+
+            //Route to currency calculator
             Container(
                 decoration: BoxDecoration(
                   color: Color(0xFFD4D4D2),
                 ),
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
+                        return Currency();
+                      }));
+                    },
                     child: Text("Currency",
                         style: TextStyle(color: Color(0xFF1C1C1C)))))
           ],
         ),
       ),
-      body: Column(
+
+      body: Column(//To place UI element in vertically
+        //Ui will pleased from the top of the screen
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          //The display
           Container(
             color: Color(0xFFD4D4D2),
             child: Column(
@@ -82,12 +110,14 @@ class _ScientificCalcState extends State<ScientificCalc> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                //Top
                 Container(
                   color: Color(0xFFD4D4D2),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      //Top left display
                       SizedBox(
                         height: 22,
                         width: 200,
@@ -105,6 +135,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                           ),
                         ),
                       ),
+                      //Top right button
                       IconButton(
                         onPressed: () {},
                         icon: Icon(Icons.more_horiz),
@@ -113,6 +144,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                     ],
                   ),
                 ),
+                //Mathematical expression
                 SizedBox(
                   height: 99,
                   child: TextField(
@@ -123,6 +155,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                         isDense: true, fillColor: Color(0xFFD4D4D2)),
                   ),
                 ),
+                //Answer of those mathematical expression
                 const SizedBox(
                   height: 63,
                   child: TextField(
@@ -138,11 +171,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                     ),
                   ),
                 ),
+                //Bottom
                 Container(
                   color: Color(0xFFD4D4D2),
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      //Bottom left display
                       SizedBox(
                           height: 22,
                           width: 200,
@@ -157,6 +192,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                               fillColor: Color(0xFFD4D4D2),
                             ),
                           )),
+                      //Bottom right display
                       SizedBox(
                           height: 22,
                           width: 120,
@@ -177,8 +213,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
               ],
             ),
           ),
+          //End of the display
+
+
+          //Buttons UI
           Column(
             children: [
+              //Button row one
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [Padding(
@@ -199,6 +240,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   ),
                 ),],
               ),
+              //Button row two
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -315,6 +357,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   ),
                 ],
               ),
+              //Button row three
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [Padding(
@@ -335,6 +378,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   ),
                 ),],
               ),
+              //Button row four
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -432,6 +476,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   )
                 ],
               ),
+              //Button row five
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -551,6 +596,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   ),
                 ],
               ),
+              //Button row six
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -576,7 +622,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "Arcsin",
+                        "sin⁻¹",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -591,7 +637,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "Arccos",
+                        "cos⁻¹",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -606,7 +652,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "Arctan",
+                        "tan⁻¹",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -637,7 +683,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "log",
+                        "LogₓY",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -648,6 +694,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   )
                 ],
               ),
+              //Button row seven
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -659,13 +706,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "SHIFT",
-                          style: TextStyle(fontSize: 11),
+                          "π",
+                          style: TextStyle(fontSize: 16),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFFF9500),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
+                            backgroundColor: Color(0xFF1C1C1C),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -679,13 +726,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "MENU",
-                          style: TextStyle(fontSize: 11),
+                          "sin",
+                          style: TextStyle(fontSize: 16),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
+                            backgroundColor: Color(0xFF1C1C1C),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -699,13 +746,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "<",
-                          style: TextStyle(fontSize: 20),
+                          "cos",
+                          style: TextStyle(fontSize: 16),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
+                            backgroundColor: Color(0xFF1C1C1C),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -719,13 +766,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          ">",
-                          style: TextStyle(fontSize: 20),
+                          "tan",
+                          style: TextStyle(fontSize: 16),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
+                            backgroundColor: Color(0xFF1C1C1C),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -738,11 +785,14 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       height: 32,
                       child: TextButton(
                         onPressed: () {},
-                        child: Icon(Icons.backspace_rounded, size: 16,),
+                        child: Text(
+                          "i",
+                          style: TextStyle(fontSize: 18),
+                        ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFFF9500),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
+                            backgroundColor: Color(0xFF1C1C1C),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -756,13 +806,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "AC",
-                          style: TextStyle(fontSize: 14),
+                          "e",
+                          style: TextStyle(fontSize: 16),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFFF9500),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
+                            backgroundColor: Color(0xFF1C1C1C),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -770,6 +820,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   ),
                 ],
               ),
+              //Button row eight
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -780,7 +831,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "lim",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -795,7 +846,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "x³",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -810,7 +861,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "∛x",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -825,7 +876,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "∛y",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -840,7 +891,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "10^x",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -856,7 +907,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "e^x",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -867,6 +918,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   )
                 ],
               ),
+              //Button row nine
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -878,13 +930,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "SHIFT",
-                          style: TextStyle(fontSize: 11),
+                          "x⁻¹",
+                          style: TextStyle(fontSize: 16),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFFF9500),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -898,13 +950,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "MENU",
-                          style: TextStyle(fontSize: 11),
+                          "x²",
+                          style: TextStyle(fontSize: 16),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -918,13 +970,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "<",
-                          style: TextStyle(fontSize: 20),
+                          "√x",
+                          style: TextStyle(fontSize: 16),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -938,13 +990,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          ">",
-                          style: TextStyle(fontSize: 20),
+                          "x^y",
+                          style: TextStyle(fontSize: 16),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -957,11 +1009,11 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       height: 32,
                       child: TextButton(
                         onPressed: () {},
-                        child: Icon(Icons.backspace_rounded, size: 16,),
+                        child: Text("log₁₀", style: TextStyle(fontSize: 16),),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFFF9500),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -975,13 +1027,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "AC",
-                          style: TextStyle(fontSize: 14),
+                          "ln",
+                          style: TextStyle(fontSize: 16),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFFF9500),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -989,6 +1041,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   ),
                 ],
               ),
+              //Button row ten
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -999,7 +1052,37 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "STAT",
+                        style: TextStyle(
+                          color: Color(0xFFC0C0C0),
+                          fontSize: 12,
+                          //fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.only(
+                  ),
+                    child: SizedBox(
+                      width: 55,
+                      child: Text(
+                        textAlign: TextAlign.center,
+                        "a b/c",
+                        style: TextStyle(
+                          color: Color(0xFFC0C0C0),
+                          fontSize: 12,
+                          //fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.only(
+                  ),
+                    child: SizedBox(
+                      width: 55,
+                      child: Text(
+                        textAlign: TextAlign.center,
+                        "Y",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1029,37 +1112,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
-                        style: TextStyle(
-                          color: Color(0xFFC0C0C0),
-                          fontSize: 12,
-                          //fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(padding: EdgeInsets.only(
-                  ),
-                    child: SizedBox(
-                      width: 55,
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        "HISTORY",
-                        style: TextStyle(
-                          color: Color(0xFFC0C0C0),
-                          fontSize: 12,
-                          //fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(padding: EdgeInsets.only(
-                  ),
-                    child: SizedBox(
-                      width: 55,
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        "HISTORY",
+                        "M+",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1075,7 +1128,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "M-",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1087,6 +1140,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
 
                 ],
               ),
+              //Button row eleven
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -1098,13 +1152,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "SHIFT",
-                          style: TextStyle(fontSize: 11),
+                          "D°M'S",
+                          style: TextStyle(fontSize: 16),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFFF9500),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -1118,13 +1172,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "MENU",
-                          style: TextStyle(fontSize: 11),
+                          "d/c",
+                          style: TextStyle(fontSize: 16),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -1138,13 +1192,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "<",
-                          style: TextStyle(fontSize: 20),
+                          "X",
+                          style: TextStyle(fontSize: 16),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -1158,13 +1212,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          ">",
-                          style: TextStyle(fontSize: 20),
+                          "XY,M",
+                          style: TextStyle(fontSize: 16),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -1177,11 +1231,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       height: 32,
                       child: TextButton(
                         onPressed: () {},
-                        child: Icon(Icons.backspace_rounded, size: 16,),
+                        child: Text("MR", style: TextStyle(
+                          fontSize: 16
+                        ),),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFFF9500),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -1195,13 +1251,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "AC",
+                          "X -> M",
                           style: TextStyle(fontSize: 14),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFFF9500),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFFF9500),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -1209,6 +1265,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   ),
                 ],
               ),
+              //Button row twelve
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -1219,7 +1276,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "CPLX",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1234,7 +1291,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "∞",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1249,7 +1306,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        " ",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1264,7 +1321,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        " ",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1279,7 +1336,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "%",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1295,7 +1352,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "mod",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1306,6 +1363,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   )
                 ],
               ),
+              //Button row thirteen
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -1317,13 +1375,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "SHIFT",
-                          style: TextStyle(fontSize: 11),
+                          "7",
+                          style: TextStyle(fontSize: 20),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFFF9500),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFC0C0C0),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -1337,13 +1395,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "MENU",
-                          style: TextStyle(fontSize: 11),
+                          "8",
+                          style: TextStyle(fontSize: 20),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFC0C0C0),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -1357,49 +1415,32 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "<",
+                          "9",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFC0C0C0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5))),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(),
+                    child: SizedBox(
+                      width: 82.5,
+                      height: 32,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "(",
                           style: TextStyle(fontSize: 20),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
                             backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5))),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(),
-                    child: SizedBox(
-                      width: 55,
-                      height: 32,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          ">",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5))),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(),
-                    child: SizedBox(
-                      width: 55,
-                      height: 32,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Icon(Icons.backspace_rounded, size: 16,),
-                        style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFFF9500),
                             foregroundColor: Color(0xFF1C1C1C),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
@@ -1409,12 +1450,12 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   Padding(
                     padding: const EdgeInsets.only(right: 5),
                     child: SizedBox(
-                      width: 55,
+                      width: 82.5,
                       height: 32,
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "AC",
+                          ")",
                           style: TextStyle(fontSize: 14),
                         ),
                         style: TextButton.styleFrom(
@@ -1428,6 +1469,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   ),
                 ],
               ),
+              //Button row fourteen
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -1438,7 +1480,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "n!",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1453,7 +1495,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "nCr",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1468,7 +1510,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "nPr",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1483,7 +1525,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        " ",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1498,7 +1540,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        ">BIN",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1514,7 +1556,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        ">OCT",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1525,6 +1567,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   )
                 ],
               ),
+              //Button row fifteen
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -1536,53 +1579,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "SHIFT",
-                          style: TextStyle(fontSize: 11),
-                        ),
-                        style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFFF9500),
-                            foregroundColor: Color(0xFF1C1C1C),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5))),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(),
-                    child: SizedBox(
-                      width: 55,
-                      height: 32,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "MENU",
-                          style: TextStyle(fontSize: 11),
-                        ),
-                        style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5))),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(),
-                    child: SizedBox(
-                      width: 55,
-                      height: 32,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "<",
+                          "4",
                           style: TextStyle(fontSize: 20),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFC0C0C0),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -1596,13 +1599,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          ">",
+                          "5",
                           style: TextStyle(fontSize: 20),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFC0C0C0),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -1615,10 +1618,33 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       height: 32,
                       child: TextButton(
                         onPressed: () {},
-                        child: Icon(Icons.backspace_rounded, size: 16,),
+                        child: Text(
+                          "6",
+                          style: TextStyle(fontSize: 20),
+                        ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFFF9500),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFC0C0C0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5))),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(),
+                    child: SizedBox(
+                      width: 82.5,
+                      height: 32,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "×",
+                          style: TextStyle(fontSize: 25),
+                        ),
+                        style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            backgroundColor: Color(0xFFC0C0C0),
                             foregroundColor: Color(0xFF1C1C1C),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
@@ -1628,13 +1654,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   Padding(
                     padding: const EdgeInsets.only( right: 5),
                     child: SizedBox(
-                      width: 55,
+                      width: 82.5,
                       height: 32,
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "AC",
-                          style: TextStyle(fontSize: 14),
+                          "÷",
+                          style: TextStyle(fontSize: 25),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
@@ -1647,6 +1673,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   ),
                 ],
               ),
+              //Button row sixteen
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -1657,7 +1684,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "abs",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1672,7 +1699,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "icm",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1687,7 +1714,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "gcd",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1702,7 +1729,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        " ",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1717,7 +1744,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        ">DEC",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1733,7 +1760,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        ">HEX",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1744,6 +1771,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   )
                 ],
               ),
+              //Button row seventeen
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -1755,53 +1783,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "SHIFT",
-                          style: TextStyle(fontSize: 11),
-                        ),
-                        style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFFF9500),
-                            foregroundColor: Color(0xFF1C1C1C),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5))),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(),
-                    child: SizedBox(
-                      width: 55,
-                      height: 32,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "MENU",
-                          style: TextStyle(fontSize: 11),
-                        ),
-                        style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5))),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(),
-                    child: SizedBox(
-                      width: 55,
-                      height: 32,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "<",
+                          "1",
                           style: TextStyle(fontSize: 20),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFC0C0C0),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -1815,13 +1803,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          ">",
+                          "2",
                           style: TextStyle(fontSize: 20),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFC0C0C0),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -1834,10 +1822,33 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       height: 32,
                       child: TextButton(
                         onPressed: () {},
-                        child: Icon(Icons.backspace_rounded, size: 16,),
+                        child: Text(
+                          "3",
+                          style: TextStyle(fontSize: 20),
+                        ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFFF9500),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFC0C0C0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5))),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(),
+                    child: SizedBox(
+                      width: 82.5,
+                      height: 32,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "+",
+                          style: TextStyle(fontSize: 25),
+                        ),
+                        style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            backgroundColor: Color(0xFFC0C0C0),
                             foregroundColor: Color(0xFF1C1C1C),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
@@ -1847,13 +1858,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   Padding(
                     padding: const EdgeInsets.only( right: 5),
                     child: SizedBox(
-                      width: 55,
+                      width: 82.5,
                       height: 32,
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "AC",
-                          style: TextStyle(fontSize: 14),
+                          "—",
+                          style: TextStyle(fontSize: 25),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
@@ -1866,6 +1877,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   ),
                 ],
               ),
+              //Button row eighteen
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -1876,7 +1888,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "OTHER",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1891,7 +1903,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "ran#",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1906,7 +1918,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "Ans",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1921,7 +1933,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        " ",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1936,7 +1948,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "EXP SI",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1952,7 +1964,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       width: 55,
                       child: Text(
                         textAlign: TextAlign.center,
-                        "HISTORY",
+                        "=,<,>",
                         style: TextStyle(
                           color: Color(0xFFC0C0C0),
                           fontSize: 12,
@@ -1963,6 +1975,7 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   )
                 ],
               ),
+              //Button row nineteen
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -1974,53 +1987,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "SHIFT",
-                          style: TextStyle(fontSize: 11),
-                        ),
-                        style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFFF9500),
-                            foregroundColor: Color(0xFF1C1C1C),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5))),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(),
-                    child: SizedBox(
-                      width: 55,
-                      height: 32,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "MENU",
-                          style: TextStyle(fontSize: 11),
-                        ),
-                        style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5))),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(),
-                    child: SizedBox(
-                      width: 55,
-                      height: 32,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "<",
+                          "0",
                           style: TextStyle(fontSize: 20),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFC0C0C0),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -2034,13 +2007,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          ">",
+                          ".",
                           style: TextStyle(fontSize: 20),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFC0C0C0),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFC0C0C0),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -2053,11 +2026,34 @@ class _ScientificCalcState extends State<ScientificCalc> {
                       height: 32,
                       child: TextButton(
                         onPressed: () {},
-                        child: Icon(Icons.backspace_rounded, size: 16,),
+                        child: Text(
+                          "+/-",
+                          style: TextStyle(fontSize: 20),
+                        ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
-                            backgroundColor: Color(0xFFFF9500),
-                            foregroundColor: Color(0xFF1C1C1C),
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFC0C0C0),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5))),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(),
+                    child: SizedBox(
+                      width: 82.5,
+                      height: 32,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "EXP",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            backgroundColor: Color(0xFF1C1C1C),
+                            foregroundColor: Color(0xFFC0C0C0),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5))),
                       ),
@@ -2066,13 +2062,13 @@ class _ScientificCalcState extends State<ScientificCalc> {
                   Padding(
                     padding: const EdgeInsets.only( right: 5),
                     child: SizedBox(
-                      width: 55,
+                      width: 82.5,
                       height: 32,
                       child: TextButton(
                         onPressed: () {},
                         child: Text(
-                          "AC",
-                          style: TextStyle(fontSize: 14),
+                          "✓",
+                          style: TextStyle(fontSize: 20),
                         ),
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.zero,
