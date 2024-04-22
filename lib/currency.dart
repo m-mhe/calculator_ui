@@ -11,8 +11,6 @@ class Currency extends StatelessWidget {
   //Variables
   final TextEditingController currencyOne = TextEditingController();
   final TextEditingController currencyTwo = TextEditingController();
-  final String answerOne = '';
-  final double answerTwo = 0;
 
   @override
   Widget build(BuildContext context) {
