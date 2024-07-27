@@ -1,15 +1,10 @@
 //Import section
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:calculator/home.dart';
-import 'package:device_preview/device_preview.dart';
 
 //Code execution point
 void main() {
-  runApp(DevicePreview(
-    enabled: kDebugMode,
-    builder: (context) => const MyApp(), // Wrap your app
-  ),);
+  runApp(const MyApp());
 }
 
 //Material design configuration
@@ -19,9 +14,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      useInheritedMediaQuery: true,
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
       //Disabling debug banner
       debugShowCheckedModeBanner: false,
       //All default theme for the app
